@@ -1,0 +1,29 @@
+$color1: #000000;
+$color2: #ffffff;
+$color3: #076b82;
+$color4: #1690a7;
+$color5: #cccccc;
+$color6: #bbbbbb;
+$color7: #aaaaaa;
+$color8: #ffa500;
+$color9: #ffdb99;
+$color10: #020305;
+$color11: #3f3f3f;
+$color12: #d64f4f;
+$color13: #ee6767;
+$color14: #fdabab;
+$color15: #002b49;
+
+body {font-size: 16px;font-family:'Lato', sans-serif;font-weight:400;color:$color1;background:$color2;}
+#contentWrapper{border: 1px solid $color7;}
+header{background:$color3;color:$color2;padding:1.2rem;}
+header figure img{width:72px;height:72px;}
+.myCityWeather{background:$color4;padding:1.5rem 0;}
+.myCityWeather .form-group{margin-bottom:0;}
+.spacer{height:30px;padding:30px;}
+footer{background:$color10;color:$color11;text-align:center;padding:3rem;}
+
+@media screen and (max-width: 768px){
+    headerh1{font-size:2rem;font-weight:900;margin-top:10px;}
+    header figure img{width:48px;height:48px;}
+}
