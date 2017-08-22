@@ -17,17 +17,17 @@ $color15: #002b49;
 body {font-size: 16px;font-family:'Lato', sans-serif;font-weight:400;color:$color1;background:$color2;}
 #contentWrapper{border: 1px solid $color7;}
 header{background:$color3;color:$color2;padding:1.2rem;}
-header figure img{width:72px;height:72px;}
-.myCityWeather{background:$color4;padding:1.5rem 0;}
+header div img{width:72px;height:72px;}
+.myCityWeather{background:$color4;padding:1.5rem 0 0.6rem 0;}
 .myCityWeather .form-group{margin-bottom:0;}
 .spacer{height:30px;padding:30px;}
 footer{background:$color10;color:$color11;text-align:center;padding:3rem;}
-#reportDay1, #reportDay2, #reportDay3{
-    ul li{width:18%!important;display:inline-block;}
+/* #reportDay1, #reportDay2, #reportDay3{ul.list-inline li{width:48%!important;display:inline-block;}} */
+
+@media screen and (max-width: 640px){
+	.myCityWeather div button[type="submit"]{float:right;}
 }
-
-
 @media screen and (max-width: 768px){
-    headerh1{font-size:2rem;font-weight:900;margin-top:10px;}
-    header figure img{width:48px;height:48px;}
+	header div h1{font-size:2rem;font-weight:900;margin-top:10px;}    
+    .container{width:100%;}    
 }

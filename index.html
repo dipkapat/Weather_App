@@ -1,161 +1,179 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 
 <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-title" content="Weather">
-    <link rel="shortcut icon" sizes="16x16" href="phoneIcon/icon-16x16.png">
-    <link href="icon/i120.png" rel="apple-touch-icon" />
-    <link href="icon/i152.png" rel="apple-touch-icon" sizes="152x152" />
-    <link href="icon/i167.png" rel="apple-touch-icon" sizes="167x167" />
-    <link href="icon/i180.png" rel="apple-touch-icon" sizes="180x180" />
-    <link href="icon/a192.png" rel="icon" sizes="192x192" />
-    <link href="icon/a128.png" rel="icon" sizes="128x128" />
-    <title>Weather Channel App</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:100,400,700">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/ie10-viewport-bug-workaround.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.min.css">
     <link rel="stylesheet" href="css/output.css">
-
-    <!--[if lt IE 9]>
-        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-  	    <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
-    <![endif]-->
 </head>
 
 <body>
+    <!--[if lt IE 8]>
+        <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
     <div class="container">
         <div class="col-md-12 col-sm-12 col-xs-12" id="contentWrapper">
             <div class="row">
                 <!-- Header -->
                 <header>
-                    <h1 class="text-uppercase pull-left">Weather Channel App</h1>
-                    <figure class="pull-right"><img src="images/logo.png"></figure>
+                    <div class="col-md-8 col-sm-8 col-xs-6"><h1 class="text-uppercase">Weather Channel App</h1></div>
+                    <div class="col-md-4 col-sm-4 col-xs-6 text-right"><img src="images/logo.png"></div>
                     <div class="clearfix"></div>
                 </header>
                 <!-- /.Header -->
                 <div class="clearfix"></div>
-
                 <!-- Weather In Your City Search -->
                 <div class="myCityWeather">
-                    <form role="form">
-                        <div class="form-group">
-                            <div class="col-md-2 col-sm-3 col-xs-6">
-                                <input type="text" class="form-control" maxlength="6" id="zip" placeholder="Enter City Zip">
-                            </div>
-                            <div class="col-md-10 col-sm-9 col-xs-6">
-                                <div class="row">
-                                    <button type="submit" onclick="loadWeather()" class="btn btn-default text-uppercase">Submit</button>
-                                </div>
-                            </div>
+                    <div class="form-group">
+                        <div class="col-md-2 col-sm-4 col-xs-12">
+                            <p><input type="text" id="zip" class="form-control" placeholder="Enter Your City Zip"></p>
                         </div>
-                    </form>
+                        <div class="col-md-2 col-sm-4 col-xs-12">
+                            <p><input type="text" id="countryCode" class="form-control" placeholder="Enter Your Country Code"></p>
+                        </div>
+                        <div class="col-md-8 col-sm-4 col-xs-12">
+                            <button type="submit" onclick="display()" class="btn btn-default text-uppercase">Submit</button>
+                        </div>
+                    </div>
                     <div class="clearfix"></div>
                 </div>
                 <!-- /.Weather In Your City Search -->
-                <div class="clearfix"></div>
-
                 <!-- Main Content Area -->
                 <!-- Current Weather Report -->
-                <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="col-md-8 col-sm-8 col-xs-12">
                     <ul class="list-unstyled text-center">
                         <li>
-                            <h2 id="location">City Kolkata, IN</h2>
+                            <h1 id="location">City Kolkata, IN</h1>
                         </li>
                         <li>
-                           <ul class="list-inline">
-                               <li class="text-center"><img id="weatherIcon"></li>
-                               <li><h3 id="weather">Current Conditions</h3></li>
-                           </ul>                            
-                        </li>
-                        
+                            <h2>Current Conditions</h2></li>
                         <li>
-                            <h1 id="temperature">00</h1>
+                            <ul class="list-inline">
+                                <li class="text-center"><img id="weatherIcon"></li>
+                                <li>
+                                    <h2 id="weather">Haze</h2></li>
+                            </ul>
                         </li>
                         <li>
-                            <h5 id="desc">A mix of clouds</h5>
-                            <h5 id="humidity">Humidity</h5>
+                            <ul class="list-inline">
+                                <li>
+                                    <h2>Temperature: </h2></li>
+                                <li>
+                                    <h2 id="temperature">30&deg;C</h2></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <h3 id="desc">A mix of clouds</h3>
+                            <h3 id="humidity">Humidity: 80%</h3>
+                            <h3 id="wind">Wind Speed: 6.0kmph</h3>
+                            <h3 id="clouds">Clouds Cover: 75%</h3>
+                            <h3 id="coData">CO Level</h3>
                         </li>
                     </ul>
                     <div class="clearfix"></div>
                 </div>
                 <!-- /.Current Weather Report -->
-                <div class="clearfix"></div>
-
-                <div class="spacer">&nbsp;</div>
-
                 <!-- Three Day Weather Report -->
-                <div class="col-md-12 col-sm-12 col-xs-12">
-                    <h2 class="text-center">Next 3 Day Weather Forecast</h2>
+                <div class="col-md-4 col-sm-4 col-xs-12">
+                    <h3 class="text-center">Next 3 Day Weather Forecast</h3>
                     <hr>
-                    <div id="reportDay1">
-                        <div class="col-md-8 col-md-offset-3 col-sm-8 col-sm-offset-3 col-xs-12">
-                            <ul class="list-inline">
-                                <li>
-                                    <h4 id="dayDate1">Mon, 7 Aug</h4>
-                                </li>
-                                <li class="text-center">
-                                    <img id="weatherIcon1">
-                                </li>
-                                <li>
-                                    <h4>Max. <span class="label label-primary" id="maxTemp1">31&deg;C</span></h4>
-                                </li>
-                                <li>
-                                    <h4>Min. <span class="label label-default" id="minTemp1">27&deg;C</span></h4>
-                                </li>
-                                <li id="dailyForecast1">Scattered Thunderstorm</li>
-                            </ul>
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <div id="reportDay1">
+                                <ul class="list-inline text-center">
+                                    <li>
+                                        <h4 id="dayDate1">Mon, 7 Aug</h4>
+                                    </li>
+                                    <li>
+                                        <span><img id="weatherIcon1"></span> <span><em id="dailyForecast1">Scattered Thunderstorm</em></span>
+                                    </li>
+                                </ul>
+                                <ul class="list-inline text-center">
+                                    <li>
+                                        <h4><span class="label label-primary" id="maxTemp1" title="Max Temp">31&deg;C</span></h4>
+                                    </li>
+                                    <li>
+                                        <h4><span class="label label-default" id="minTemp1" title="Min Temp">27&deg;C</span></h4>
+                                    </li>
+                                </ul>
+                                <ul class="list-inline text-center">
+                                    <li><small id="cloudsDay1">Cloud Cover: 80%</small></li>
+                                    <li><small id="humidityDay1">Humidity: 75%</small></li>
+                                    <li><small id="windDay1">Wind Speed: 5.9kmph</small></li>
+                                    <li><small id="rainDay1">Precipitation: 50mm</small></li>
+                                </ul>
+                            </div>
                         </div>
-                    </div>
-                    <div id="reportDay2">
-                        <div class="col-md-8 col-md-offset-3 col-sm-8 col-sm-offset-3 col-xs-12">
-                            <ul class="list-inline">
-                                <li>
-                                    <h4 id="dayDate2">Mon, 7 Aug</h4>
-                                </li>
-                                <li class="text-center">
-                                    <img id="weatherIcon2">
-                                </li>
-                                <li>
-                                    <h4>Max. <span class="label label-primary" id="maxTemp2">31&deg;C</span></h4>
-                                </li>
-                                <li>
-                                    <h4>Min. <span class="label label-default" id="minTemp2">27&deg;C</span></h4>
-                                </li>
-                                <li id="dailyForecast2">Scattered Thunderstorm</li>
-                            </ul>
+                        <div class="clearfix"></div>
+                        <hr>
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <div id="reportDay2">
+                                <ul class="list-inline text-center">
+                                    <li>
+                                        <h4 id="dayDate2">Mon, 7 Aug</h4>
+                                    </li>
+                                    <li>
+                                        <span><img id="weatherIcon2"></span> <span><em id="dailyForecast2">Scattered Thunderstorm</em></span>
+                                    </li>
+                                </ul>
+                                <ul class="list-inline text-center">
+                                    <li>
+                                        <h4><span class="label label-primary" id="maxTemp2" title="Max Temp">31&deg;C</span></h4>
+                                    </li>
+                                    <li>
+                                        <h4><span class="label label-default" id="minTemp2" title="Min Temp">27&deg;C</span></h4>
+                                    </li>
+                                </ul>
+                                <ul class="list-inline text-center">
+                                    <li><small id="cloudsDay2">Cloud Cover: 80%</small></li>
+                                    <li><small id="humidityDay2">Humidity: 75%</small></li>
+                                    <li><small id="windDay2">Wind Speed: 5.9kmph</small></li>
+                                    <li><small id="rainDay2">Precipitation: 50mm</small></li>
+                                </ul>
+                            </div>
                         </div>
-                    </div>
-                    <div id="reportDay3">
-                        <div class="col-md-8 col-md-offset-3 col-sm-8 col-sm-offset-3 col-xs-12">
-                            <ul class="list-inline">
-                                <li>
-                                    <h4 id="dayDate3">Mon, 7 Aug</h4>
-                                </li>
-                                <li class="text-center">
-                                    <img id="weatherIcon3">
-                                </li>
-                                <li>
-                                    <h4>Max. <span class="label label-primary" id="maxTemp3">31&deg;C</span></h4>
-                                </li>
-                                <li>
-                                    <h4>Min. <span class="label label-default" id="minTemp3">27&deg;C</span></h4>
-                                </li>
-                                <li id="dailyForecast3">Scattered Thunderstorm</li>
-                            </ul>
+                        <div class="clearfix"></div>
+                        <hr>
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <div id="reportDay3">
+                                <ul class="list-inline text-center">
+                                    <li>
+                                        <h4 id="dayDate3">Mon, 7 Aug</h4>
+                                    </li>
+                                    <li>
+                                        <span><img id="weatherIcon3"></span> <span><em id="dailyForecast3">Scattered Thunderstorm</em></span>
+                                    </li>
+                                </ul>
+                                <ul class="list-inline text-center">
+                                    <li>
+                                        <h4><span class="label label-primary" id="maxTemp3" title="Max Temp">31&deg;C</span></h4>
+                                    </li>
+                                    <li>
+                                        <h4><span class="label label-default" id="minTemp3" title="Min Temp">27&deg;C</span></h4>
+                                    </li>
+                                </ul>
+                                <ul class="list-inline text-center">
+                                    <li><small id="cloudsDay3">Cloud Cover: 80%</small></li>
+                                    <li><small id="humidityDay3">Humidity: 75%</small></li>
+                                    <li><small id="windDay3">Wind Speed: 5.9kmph</small></li>
+                                    <li><small id="rainDay3">Precipitation: 50mm</small></li>
+                                </ul>
+                            </div>
                         </div>
+                        <div class="clearfix"></div>
                     </div>
                 </div>
                 <!-- /.Three day Weather Report -->
                 <!-- /.Main Content Area -->
                 <div class="clearfix"></div>
-                <div class="spacer"></div>
-                
+                <div class="spacer">&nbsp;</div>
                 <!-- Footer -->
                 <footer>
                     <div class="container">
@@ -170,8 +188,8 @@
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-    <script src="js/ie10-viewport-bug-workaround.js"></script>
-    <script src="js/app.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+    <script src="js/app.js" type="text/javascript"></script>
 </body>
 
 </html>
